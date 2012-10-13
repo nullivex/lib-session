@@ -2,7 +2,7 @@
 
 require_once(ROOT.'/lib/session.php');
 
-class StaffSession extends Session {
+abstract final class StaffSession extends Session {
 
 	public static function requireManager(){
 		if(self::get('is_manager')) return true;
