@@ -1,6 +1,6 @@
 <?php
 
-class Session {
+abstract class Session {
 
 	static $session = false;
 	static $config_name = 'session';
