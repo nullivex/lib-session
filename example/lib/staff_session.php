@@ -1,6 +1,6 @@
 <?php
 
-require_once(ROOT.'/lib/session.php');
+lib('session');
 
 abstract class StaffSession extends Session {
 	public static function requireManager(){
