@@ -8,9 +8,10 @@ abstract class Staff {
 
 	public static function createParams(){
 		return array(
-			'email'			=>	'',
-			'name'			=>	'',
-			'is_manager'	=>	''
+			 'email'		=> ''
+			,'name'			=> ''
+			,'is_manager'	=> 1
+			,'is_active'	=> 1
 		);
 	}
 
@@ -33,19 +34,19 @@ abstract class Staff {
 		return Db::_get()->insert(
 			'staff'
 			,array(
-				 'email'		=>	mda_get($data,'email')
-				,'password'		=>	bcrypt(mda_get($data,'password'))
-				,'name'			=>	mda_get($data,'name')
-				,'is_manager'	=>	(mda_get($data,'is_manager') ? 1 : 0)
+				 'email'		=> mda_get($data,'email')
+				,'password'		=> bcrypt(mda_get($data,'password'))
+				,'name'			=> mda_get($data,'name')
+				,'is_manager'	=> (mda_get($data,'is_manager') ? 1 : 0)
 			)
 		);
 	}
 
 	public static function update($staff_id,$data){
 		$update = array(
-			 'email'		=>	mda_get($data,'email')
-			,'name'			=>	mda_get($data,'name')
-			,'is_manager'	=>	(mda_get($data,'is_manager') ? 1 : 0)
+			 'email'		=> mda_get($data,'email')
+			,'name'			=> mda_get($data,'name')
+			,'is_manager'	=> (mda_get($data,'is_manager') ? 1 : 0)
 		);
 		if(mda_get($data['password'])) $update['password'] = bcrypt(mda_get($data,'password'));
 		return Db::_get()->update('staff','staff_id',$staff_id,$update);
