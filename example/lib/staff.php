@@ -65,7 +65,7 @@ abstract class Staff {
 	}
 
 	public static function drop($value=null,$name='staff_id'){
-		lib('form_drop');
+		lib('ui_form_drop');
 		foreach(self::all() as $staff)
 			$arr[$staff['staff_id']] = $staff['name'].' <'.$staff['email'].'>';
 		$drop = FormDrop::_get()->setOptions($arr);
