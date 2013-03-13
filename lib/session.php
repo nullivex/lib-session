@@ -81,7 +81,7 @@ abstract class Session {
 		$token = self::findToken($id,$remote_ip,$user_agent);
 		if($token) return $token['token'];
 		//create a new token
-		$token = guid();
+		$token = gen_guid();
 		$expires = time() + Config::get(self::$config_name,'token_life');
 		Db::_get()->insert(
 			self::$session_table
