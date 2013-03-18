@@ -1,6 +1,6 @@
 <?php
 
-lib('session');
+ld('session');
 
 abstract class StaffSession extends Session {
 	public static function requireManager(){
