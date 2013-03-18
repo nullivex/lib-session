@@ -1,7 +1,7 @@
 <?php
 
 //err codes
-_e(array(
+__e(array(
 	 1101	=>	'E_SESSION_INVALID_TOKEN'
 	,1102	=>	'E_SESSION_NO_SESSION'
 ));
