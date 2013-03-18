@@ -1,4 +1,5 @@
 <?php
+ld('/func/bcrypt','/func/gen');
 
 //err codes
 __e(array(
