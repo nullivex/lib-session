@@ -1,5 +1,5 @@
 <?php
-lib('staff','staff_session');
+ld('staff','staff_session');
 
 if(session_id() != ''){
 	//check for session
