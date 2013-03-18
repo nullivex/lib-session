@@ -1,5 +1,11 @@
 <?php
 
+//err codes
+_e(array(
+	 1101	=>	'E_SESSION_INVALID_TOKEN'
+	,1102	=>	'E_SESSION_NO_SESSION'
+));
+
 abstract class Session {
 
 	static $session = false;
@@ -28,7 +34,7 @@ abstract class Session {
 	}
 
 	public static function get($var=false){
-		if(!self::$session) throw new Exception('No session exists',ERR_SESSION_NO_SESSION);
+		if(!self::$session) throw new Exception('No session exists',E_SESSION_NO_SESSION);
 		if(!$var) return self::$session;
 		return mda_get(self::$session,$var);
 	}
@@ -71,7 +77,7 @@ abstract class Session {
 	public static function tokenCheck($token,$remote_ip,$return_token=false){
 		$token = $this->get($token);
 		if(!$token || $token['remote_ip'] != $remote_ip)
-			throw new Exception('Token invalid',ERR_SESSION_INVALID_TOKEN);
+			throw new Exception('Token invalid',E_SESSION_INVALID_TOKEN);
 		if(!$return_token) return true;
 		return $token;
 	}
