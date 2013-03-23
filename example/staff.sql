@@ -1,3 +1,8 @@
+--
+-- Table structure for table `staff`
+--
+
+>>>>>>> master
 CREATE TABLE IF NOT EXISTS `staff` (
   `staff_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `primary_contact_id` int(10) unsigned DEFAULT NULL,
