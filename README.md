@@ -67,7 +67,7 @@ Checks if a session needed to validate a login exists
 ### (bool) Session::get($var=false)
 Returns MDA key from the session registry
 When $var is FALSE the entire registry is returned
-``php
+```php
 $staff_id = Session::get('staff_id');
 ```
 
@@ -81,7 +81,7 @@ Returns the current session token
 ### (void) Session::startSession($token)
 Stores the token in an actual PHP session
 
-### (void) Session::destorySession()
+### (void) Session::destroySession()
 Destroys the session help in PHP
 
 ### (array) Session::getByToken($token)
