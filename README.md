@@ -67,7 +67,7 @@ Checks if a session needed to validate a login exists
 ### (bool) Session::get($var=false)
 Returns MDA key from the session registry
 When $var is FALSE the entire registry is returned
-``php
+```php
 $staff_id = Session::get('staff_id');
 ```
 
