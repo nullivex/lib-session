@@ -19,7 +19,6 @@
  *	If not, see <http://www.gnu.org/licenses/>.
  */
 namespace LSS;
-ld('/func/bcrypt','/func/gen');
 
 //err codes
 __e(array(

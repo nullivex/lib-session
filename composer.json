@@ -31,4 +31,20 @@
 		,"openlss/func-ui":			">=0.0.1"
 		,"openlss/lib-url":			">=0.0.1"
 	}
+	,"require-dev": {
+		 "openlss/core-boot":		"dev-master"
+		,"openlss/func-bcrypt":		"dev-master"
+		,"openlss/func-gen":		"dev-master"
+		,"openlss/func-mda":		"dev-master"
+		,"openlss/func-mda-glob":	"dev-master"
+		,"openlss/func-ui":			"dev-master"
+		,"openlss/lib-url":			"dev-master"
+	}
+	,"autoload": {
+		"psr-0": {
+			"LSS":	""
+		}
+	}
 }
+
+

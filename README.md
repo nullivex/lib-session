@@ -8,9 +8,8 @@ Usage
 ```php
 
 //extending
-ld('session');
 
-abstract class StaffSession extends Session {
+abstract class StaffSession extends \LSS\Session {
 	public static function requireManager(){
 		if(self::get('is_manager')) return true;
 		throw new Exception('Permission denied');
