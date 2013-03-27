@@ -20,7 +20,7 @@
  */
 namespace LSS;
 
-//err codes
+//err codes (from openlss/core-boot)
 __e(array(
 	 1101	=>	'E_SESSION_INVALID_TOKEN'
 	,1102	=>	'E_SESSION_NO_SESSION'
@@ -39,7 +39,7 @@ abstract class Session {
 	//Login Session Handling
 	//------------------------------------
 	public static function isLoggedIn(){
-		if(!self::$session || !mda_get(self::$session,'token')) return false;
+		if(!static::$session || !mda_get(static::$session,'token')) return false;
 		return true;
 	}
 
@@ -49,30 +49,30 @@ abstract class Session {
 	}
 
 	public static function checkLogin(){
-		if(!session(self::$session_name)) return false;
+		if(!session(static::$session_name)) return false;
 		return true;
 	}
 
 	public static function get($var=false){
-		if(!self::$session) throw new Exception('No session exists',E_SESSION_NO_SESSION);
-		if(!$var) return self::$session;
-		return mda_get(self::$session,$var);
+		if(!static::$session) throw new Exception('No session exists',E_SESSION_NO_SESSION);
+		if(!$var) return static::$session;
+		return mda_get(static::$session,$var);
 	}
 
 	public static function storeSession($session){
-		self::$session = $session; return true;
+		static::$session = $session; return true;
 	}
 
 	public static function getTokenFromSession(){
-		return session(self::$session_name);
+		return session(static::$session_name);
 	}
 
 	public static function startSession($token){
-		session(self::$session_name,$token);
+		session(static::$session_name,$token);
 	}
 
 	public static function destroySession(){
-		session_delete(self::$session_name);
+		session_delete(static::$session_name);
 	}
 
 	//------------------------------------
@@ -81,14 +81,14 @@ abstract class Session {
 	public static function getByToken($token){
 		$token = substr($token,0,32); //workaround for old sha1 token in new 32-byte guid field
 		return Db::_get()->fetch(
-			'SELECT * FROM '.self::$session_table.' WHERE token=? AND is_active=?'
+			'SELECT * FROM '.static::$session_table.' WHERE token=? AND is_active=?'
 			,array($token,1)
 		);
 	}
 
 	public static function findToken($id,$remote_ip,$user_agent){
 		return Db::_get()->fetch(
-			'SELECT * FROM `'.self::$session_table.'`'
+			'SELECT * FROM `'.static::$session_table.'`'
 			.'WHERE `'.self::$user_primary_key.'`=? AND remote_ip=? AND user_agent=? AND is_active=?'
 			,array($id,$remote_ip,$user_agent,1)
 		);
@@ -108,9 +108,9 @@ abstract class Session {
 		if($token) return $token['token'];
 		//create a new token
 		$token = gen_guid();
-		$expires = time() + Config::get(self::$config_name,'token_life');
+		$expires = time() + Config::get(static::$config_name,'token_life');
 		Db::_get()->insert(
-			self::$session_table
+			static::$session_table
 			,array(
 				 'token'					=> $token
 				,self::$user_primary_key	=> $id
@@ -124,7 +124,7 @@ abstract class Session {
 	}
 
 	public static function tokenDestroy($token){
-		Db::_get()->update(self::$session_table,'token',$token,array('is_active'=>0));
+		Db::_get()->update(static::$session_table,'token',$token,array('is_active'=>0));
 		return $token;
 	}
 
