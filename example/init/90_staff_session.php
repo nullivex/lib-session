@@ -18,8 +18,8 @@
  *	GNU Lesser General Public License along with OpenLSS.
  *	If not, see <http://www.gnu.org/licenses/>.
  */
-namespace LSS;
-ld('staff','staff_session');
+use \LSS\Session\Staff;
+use \LSS\Session\StaffSession;
 
 if(session_id() != ''){
 	//check for session

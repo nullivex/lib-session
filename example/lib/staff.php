@@ -18,7 +18,9 @@
  *	GNU Lesser General Public License along with OpenLSS.
  *	If not, see <http://www.gnu.org/licenses/>.
  */
-namespace LSS;
+namespace LSS\Session;
+
+use \LSS\Db;
 
 abstract class Staff {
 
@@ -85,10 +87,9 @@ abstract class Staff {
 	}
 
 	public static function drop($value=null,$name='staff_id'){
-		ld('ui_form_drop');
 		foreach(self::all() as $staff)
 			$arr[$staff['staff_id']] = $staff['name'].' <'.$staff['email'].'>';
-		$drop = FormDrop::_get()->setOptions($arr);
+		$drop = \LSS\Form\Drop::_get()->setOptions($arr);
 		$drop->setName($name);
 		$drop->setValue($value);
 		return $drop;
