@@ -30,8 +30,8 @@ StaffSession::init();
 try {
 	if(StaffSession::checkLogin()){
 		//register session
-		$token = StaffSession::getByToken(StaffSession::getTokenFromSession());
-		$session = array_merge(Staff::get($token['staff_id']),$token);
+		$token = StaffSession::fetchByToken(StaffSession::getTokenFromSession());
+		$session = array_merge(Staff::fetch($token['staff_id']),$token);
 		StaffSession::storeSession($session);
 		unset($session,$token);
 		//set tpl globals (if Tpl is available)
@@ -83,7 +83,7 @@ Stores the token in an actual PHP session
 ### (void) Session::destroySession()
 Destroys the session help in PHP
 
-### (array) Session::getByToken($token)
+### (array) Session::fetchByToken($token)
 Return a session by token
 
 ### (array) Session::findToken($id,$remote_ip,$user_agent)
