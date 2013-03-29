@@ -19,13 +19,14 @@
  *	If not, see <http://www.gnu.org/licenses/>.
  */
 namespace LSS\Session;
+use \LSS\Session;
 
 abstract class StaffSession extends \LSS\Session {
 
-	static::$config_name		= 'staff';
-	static::$session_name		= 'staff_token';
-	static::$session_table	= 'staff_session';
-	static::$user_primary_key	= 'staff_id';
+	static $config_name			= 'staff';
+	static $session_name		= 'staff_token';
+	static $session_table		= 'staff_session';
+	static $user_primary_key	= 'staff_id';
 
 	public static function requireManager(){
 		if(self::get('is_manager')) return true;

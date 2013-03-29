@@ -26,8 +26,8 @@ if(session_id() != ''){
 	try {
 		if(StaffSession::checkLogin()){
 			//register session
-			$token = StaffSession::getByToken(StaffSession::getTokenFromSession());
-			$session = array_merge(Staff::get($token['staff_id']),$token);
+			$token = StaffSession::fetchByToken(StaffSession::getTokenFromSession());
+			$session = array_merge(Staff::fetch($token['staff_id']),$token);
 			StaffSession::storeSession($session);
 			unset($session,$token);
 			//set tpl globals (if Tpl is available)

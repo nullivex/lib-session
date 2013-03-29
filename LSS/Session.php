@@ -78,7 +78,7 @@ abstract class Session {
 	//------------------------------------
 	//Token Handling
 	//------------------------------------
-	public static function getByToken($token){
+	public static function fetchByToken($token){
 		$token = substr($token,0,32); //workaround for old sha1 token in new 32-byte guid field
 		return Db::_get()->fetch(
 			'SELECT * FROM '.static::$session_table.' WHERE token=? AND is_active=?'

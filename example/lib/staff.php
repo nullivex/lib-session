@@ -24,7 +24,7 @@ use \LSS\Db;
 
 abstract class Staff {
 
-	public static function all(){
+	public static function fetchAll(){
 		return Db::_get()->fetchAll('SELECT * FROM staff WHERE is_active = ?',array(1));
 	}
 
@@ -37,7 +37,7 @@ abstract class Staff {
 		);
 	}
 
-	public static function get($staff_id){
+	public static function fetch($staff_id){
 		return Db::_get()->fetch(
 			'SELECT * FROM staff WHERE staff_id=? AND is_active=?'
 			,array($staff_id,1)
@@ -45,7 +45,7 @@ abstract class Staff {
 		);
 	}
 
-	public static function getByEmail($email){
+	public static function fetchByEmail($email){
 		return Db::_get()->fetch(
 			'SELECT * FROM staff WHERE email=? AND is_active=?'
 			,array($email,1)
@@ -87,7 +87,7 @@ abstract class Staff {
 	}
 
 	public static function drop($value=null,$name='staff_id'){
-		foreach(self::all() as $staff)
+		foreach(self::fetchAll() as $staff)
 			$arr[$staff['staff_id']] = $staff['name'].' <'.$staff['email'].'>';
 		$drop = \LSS\Form\Drop::_get()->setOptions($arr);
 		$drop->setName($name);
