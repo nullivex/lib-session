@@ -34,7 +34,7 @@ if(session_id() != ''){
 			if(is_callable(array('Tpl','_get'))){
 				Tpl::_get()->set(array(
 					 'staff_name'		=>	StaffSession::get('name')
-					,'staff_lastlogin'	=>	date(Config::get('date','general_format'),StaffSession::get('last_login'))
+					,'staff_lastlogin'	=>	date(Config::get('account.date.general_format'),StaffSession::get('last_login'))
 				));
 			}
 		} else {
