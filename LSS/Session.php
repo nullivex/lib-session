@@ -20,6 +20,8 @@
  */
 namespace LSS;
 
+use \Exception;
+
 //err codes (from openlss/core-boot)
 __e(array(
 	 1101	=>	'E_SESSION_INVALID_TOKEN'
